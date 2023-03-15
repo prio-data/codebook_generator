@@ -39,9 +39,8 @@ def md2df(file_path):
 
         
 def df2json(df, file_name, save_path):
-    # Convert the DataFrame to a JSON string
+
     json_data = df.to_json(orient='index')
-    # Create the directory if it doesn't exist
     os.makedirs(save_path, exist_ok=True)
     with open(os.path.join(save_path, file_name), 'w') as json_file:
         json_file.write(json_data)
