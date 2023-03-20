@@ -4,6 +4,16 @@ import json
 import os
 
 def md2df(file_path):
+    """
+    Converts the codebook markdown file to a Pandas DataFrame.
+    
+    **Example**:  df = md2df('filename.md')
+    
+    For now, this function is engineered for the codebook markdown file; however, it can be adjusted to fit other 
+    markdown formats
+    
+    """
+        
     with open(file_path, 'r') as f:
         markdown_text = f.read()
     
@@ -39,7 +49,13 @@ def md2df(file_path):
 
         
 def df2json(df, file_name, save_path):
-
+    """
+    Converts a DataFrame to a Json file at the save path 
+    
+    **Example**: df2json(df, file_name= 'file name.json', save_path='desired file save path')
+    
+    """
+    
     json_data = df.to_json(orient='index')
     os.makedirs(save_path, exist_ok=True)
     with open(os.path.join(save_path, file_name), 'w') as json_file:
